@@ -20,11 +20,9 @@ with open('message.txt', 'rb') as infile:
         data = infile.read(2)
         print('encrypting...')
         while data:
-            print(data)
             # encrypt
             msg_block = int.from_bytes(data, sys.byteorder)
             cipher_txt = (msg_block ** e) % n
-            print(cipher_txt)
             out_block = cipher_txt.to_bytes(2, sys.byteorder)
             outfile.write(out_block)
             data = infile.read(2)
@@ -36,12 +34,8 @@ with open('cipher.txt', 'rb') as infile:
         while data:
             # decrypt
             msg_block = int.from_bytes(data, sys.byteorder)
-            for x in range(d - 1):
-                msg_block = msg_block * msg_block % n
-            decrypt_txt = msg_block
-            print(decrypt_txt)
+            decrypt_txt = (msg_block ** d) % n
             out_block = decrypt_txt.to_bytes(2, sys.byteorder)
-            print(out_block)
             outfile.write(out_block)
             data = infile.read(2)
 
