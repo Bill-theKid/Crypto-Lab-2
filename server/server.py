@@ -1,5 +1,4 @@
 import socket
-# import jks
 import hashlib
 import rsa
 import threading
@@ -29,9 +28,6 @@ def thread_task(client, address):
         print('Invalid digital signature, discarding message.')
         
     return
-                
-# keystore = jks.KeyStore.new('jks', [])
-# keystore.save('server.jks', 'password1234')
 
 HOST = '127.0.0.1'
 PORT = 7791
